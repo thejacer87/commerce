@@ -99,13 +99,14 @@ class CheckoutOrderTest extends CommerceBrowserTestBase {
     $line_item->save();
     $order = Order::create([
       'type' => 'default',
-      'state' => 'in_checkout',
       'order_number' => '6',
       'mail' => 'test@example.com',
       'uid' => $user->id(),
       'ip_address' => '127.0.0.1',
       'billing_profile' => $profile,
       'line_items' => [$line_item],
+      'state' => 'draft',
+      'cart' => TRUE,
     ]);
     $order->save();
 
